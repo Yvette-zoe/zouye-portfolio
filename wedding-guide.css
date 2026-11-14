@@ -1,0 +1,55 @@
+.wedding-case { --wedding-plum: #655780; --wedding-lilac: #a49ac0; --wedding-paper: #f5f0e8; }
+.wedding-case .case-title-dot { color: var(--wedding-plum); }
+.wedding-case .case-hero-head,
+.wedding-case .case-section-label,
+.wedding-case .case-step-number,
+.wedding-case .case-step-aside,
+.wedding-case .case-system-arrow { color: var(--wedding-plum); }
+.wedding-hero { background: radial-gradient(circle at 84% 20%, #e4dced 0, transparent 37%), var(--wedding-paper); }
+.wedding-hero-media { inset: auto var(--gutter) auto auto; top: 50%; transform: translateY(-50%); height: calc(100% - 96px); max-height: 660px; aspect-ratio: 390 / 844; padding: 7px; border: 2px solid #544d65; border-radius: 44px; background: #2d293e; box-shadow: 0 28px 45px rgb(44 36 57 / 22%), inset 0 0 0 1px rgb(255 255 255 / 12%); }
+.wedding-hero-media::before { content: ''; position: absolute; right: -5px; top: 25%; width: 3px; height: 54px; border-radius: 0 3px 3px 0; background: #544d65; }
+.wedding-hero-media::after { display: none; }
+.wedding-hero-media { box-sizing: content-box; }
+.wedding-hero-video { width: 100%; height: 100%; border-radius: 34px; object-fit: contain; object-position: center; background: #faf7f0; }
+.wedding-hero .case-hero-kind { margin-right: 0; position: absolute; right: calc(var(--gutter) + 330px); top: 38px; }
+.wedding-hero .case-hero-actions { position: relative; z-index: 3; padding: 5px; color: var(--wedding-plum); background: transparent; }
+.wedding-hero .case-video-toggle { color: inherit; background: transparent; }
+.wedding-hero .case-video-icon { display: block; width: 40px; height: 40px; background: currentColor; -webkit-mask: url("./assets/projects/wedding-guide/pause.svg") center / contain no-repeat; mask: url("./assets/projects/wedding-guide/pause.svg") center / contain no-repeat; transition: transform 180ms ease; }
+.wedding-hero .case-video-toggle.is-paused .case-video-icon { -webkit-mask-image: url("./assets/projects/wedding-guide/play.svg"); mask-image: url("./assets/projects/wedding-guide/play.svg"); }
+.wedding-hero .case-video-toggle:hover .case-video-icon { transform: scale(1.1); }
+.wedding-hero h1 { position: relative; z-index: 3; }
+.wedding-hero h1 em { max-width: 58%; }
+.wedding-hero .case-down { color: var(--wedding-plum); }
+.wedding-hero .case-down::after { content: '在线体验'; border-color: #c7bdd1; background: var(--wedding-paper); color: #514765; }
+.wedding-hero .case-down-icon { -webkit-mask-image: url("./assets/projects/wedding-guide/arrow-down-wide-line.svg"); mask-image: url("./assets/projects/wedding-guide/arrow-down-wide-line.svg"); }
+.wedding-cover { background: linear-gradient(135deg, #3d4270 0%, #5d6da0 55%, #8572ad 100%); }
+.wedding-cover .case-cover-copy p { color: #f2edf6; }
+.wedding-cover .case-cover-phones { position: relative; display: block; height: 100%; }
+.wedding-cover .case-cover-phone { position: absolute; display: block; width: min(52%, 280px); height: auto; max-height: none; border: 7px solid #2f2c41; border-radius: 34px; background: #f8f5ef; box-shadow: 0 0 0 1px #4a4560, 0 30px 60px rgb(20 18 40 / 40%); }
+.wedding-cover .case-cover-phone--home { left: 8%; top: 10%; transform: rotate(-4deg); }
+.wedding-cover .case-cover-phone--remind { left: 46%; top: 0; z-index: 1; transform: rotate(3deg); }
+.wedding-step-visual .case-step-shot { border-color: #342f3d; background: #faf7f0; box-shadow: 0 24px 48px rgb(56 43 74 / 21%); }
+.wedding-case .case-principle { background: #292532; }
+.wedding-case .case-principle .case-section-label,
+.wedding-case .case-principle-grid article > span { color: #c9b8e2; }
+.wedding-case .case-principle h2 em { color: #c9b8e2; }
+.wedding-case .case-system-diagram { background: #e9e3ed; }
+.wedding-case .case-system-row > span { border-color: #c9bfd3; background: #fbf9fc; }
+.wedding-system-split > span { flex: 1; }
+.wedding-experience { padding-top: 20px; }
+.wedding-experience h2 { margin: 54px 0 20px; }
+.wedding-experience-note { max-width: 520px; margin: 0 0 40px; color: var(--muted); font-size: 15px; line-height: 1.9; }
+.wedding-experience-frame { height: 1050px; background: #f5f0e8; }
+@media (max-width: 900px) {
+  .wedding-hero-media { right: 30px; height: calc(100% - 130px); }
+  .wedding-hero .case-hero-kind { right: auto; left: var(--gutter); top: 88px; }
+}
+@media (max-width: 650px) {
+  .wedding-hero { min-height: 660px; padding-bottom: 46px; }
+  .wedding-hero-media { position: relative; inset: auto; transform: none; order: 2; align-self: center; flex: none; width: min(72vw, 280px); height: auto; margin-top: 40px; z-index: 0; }
+  .wedding-hero .case-hero-kind { position: static; }
+  .wedding-hero h1 em { max-width: 100%; }
+  .wedding-cover .case-cover-phones { position: absolute; left: 6%; right: 6%; bottom: -28px; height: 370px; }
+  .wedding-cover .case-cover-phone { width: min(52%, 190px); height: auto; border-width: 5px; border-radius: 24px; }
+  .wedding-experience-frame { height: 900px; }
+}

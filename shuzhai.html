@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="书摘：一个本地优先的记录工具。摘抄和感想分开记，按时间或类型回看，并可导出到 Notion 与 Obsidian。" />
+  <title>书摘｜产品实践｜ZouYe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./editorial.css?v=20261110-6" />
+  <link rel="stylesheet" href="./xiajiben.css?v=20261102-3" />
+  <link rel="stylesheet" href="./shuzhai.css?v=20261110-5" />
+</head>
+<body class="case-site shuzhai-case">
+  <a class="skip-link" href="#case-main">跳至项目内容</a>
+  <div class="page-shell">
+    <header class="topbar is-visible">
+      <a class="brand-lockup" href="./index.html#home" aria-label="返回 ZouYe 首页">
+        <span class="brand-mark"><img src="./assets/yvette-portrait.jpg" alt="" width="30" height="30" /></span>
+        <span class="brand-name">ZouYe</span>
+      </a>
+      <nav class="site-nav" aria-label="主导航">
+        <a href="./index.html#home">首页</a>
+        <a href="./index.html#ai-projects" aria-current="page">AI实践</a>
+        <a href="https://yvette-zoe.github.io/Personal-Architectural-portfolio/" target="_blank" rel="noopener noreferrer">建筑与规划设计</a>
+        <a href="./index.html#articles">实践文章</a>
+        <a href="./index.html#other">其他</a>
+        <a href="./index.html#about">联系我</a>
+      </nav>
+    </header>
+
+    <main id="case-main" class="case-main">
+      <section class="case-hero shuzhai-hero" aria-labelledby="case-title">
+        <div class="case-hero-media shuzhai-hero-media" aria-hidden="true">
+          <div class="sz-device">
+            <img src="./assets/projects/shuzhai/record.png" alt="" />
+          </div>
+        </div>
+        <a class="case-back" href="./index.html#ai-projects">← 返回 AI 实践</a>
+        <div class="case-hero-head">
+          <p class="case-eyebrow">03 / PRODUCT PRACTICE</p>
+          <p class="case-hero-kind">网页应用 · 可离线</p>
+        </div>
+        <h1 id="case-title">书摘<span class="case-title-dot">.</span><br /><em>沉浸阅读，<br />让记录回归原始的单纯。</em></h1>
+        <div class="case-hero-bottom">
+          <p>拒绝广告、减少跳转，简化类目与功能，打开就是输入。让阅读与记录回到最原初的状态。不注册、不上传，一键导出，把整理留到以后，统一纳入笔记系统，构建自己的知识库。</p>
+          <div class="case-hero-actions"><a href="#case-experience" class="case-down" aria-label="在线体验"><span class="case-down-icon" aria-hidden="true"></span></a></div>
+        </div>
+      </section>
+
+      <figure class="case-cover case-cover--screens shuzhai-cover">
+        <div class="case-cover-copy"><span>THE RECORD</span><strong>原句归原句，<br />感想归感想。</strong><p>从写下到找回，不要求建书、选笔记本或打标签。</p></div>
+        <div class="case-cover-phones">
+          <div class="sz-device sz-device--home" role="img" aria-label="书摘记录页实机画面：摘抄与感想切换，打开即可输入">
+            <img src="./assets/projects/shuzhai/record.png" alt="书摘记录页，摘抄已选中" />
+          </div>
+          <div class="sz-device sz-device--overview" role="img" aria-label="总览页实机画面：按时间查看记录天数、书摘总数和当天条目">
+            <img src="./assets/projects/shuzhai/overview-time.png" alt="书摘总览页，按时间分组" />
+          </div>
+        </div>
+      </figure>
+
+      <section class="case-intro case-container" id="case-story" aria-labelledby="story-title">
+        <div class="case-section-label"><span>01 / CONTEXT</span><span>为什么做</span></div>
+        <div class="case-intro-body">
+          <h2 id="story-title">回到纸质书阅读时的<br />沉浸体验</h2>
+          <p>电子书跳转注释打断思路，手机看书总被消息带跑；用豆瓣或笔记软件记摘抄，功能太多、入口太重，想记一句话要先选书名、打标签，打开还容易分心。于是想做一个“打开→写→关掉”的书摘工具：不用选书名、不用打标签，按时间往下记，回头按时间翻。像随身带着以前的摘抄本，但不用带本子。</p>
+          <div class="case-facts" aria-label="项目概况">
+            <div><span>项目形式</span><strong>Vibecoding小工具</strong></div>
+            <div><span>使用端</span><strong>移动端优先的网页应用（可添加主屏幕）</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-journey case-container" aria-labelledby="journey-title">
+        <div class="case-section-label"><span>02 / EXPERIENCE</span><span>一条完整流程</span></div>
+        <div class="case-journey-head">
+          <h2 id="journey-title">写下、找回、带走。<br />范围就这三步。</h2>
+        </div>
+        <ol class="case-steps">
+          <li>
+            <span class="case-step-number">01</span>
+            <div class="case-step-copy"><span class="case-step-aside">INPUT / CHOOSE</span><h3>先选类型，再写一段</h3><p>将工具添加至【主屏幕】，点击直接进入记录页面。区分【摘抄】与【感想】。选定分类即可开始记录。</p></div>
+            <div class="case-step-visual shuzhai-step-visual shuzhai-step-visual--open" role="img" aria-label="左侧为主屏幕上的书摘图标，右侧为进入后的记录页">
+              <div class="sz-device sz-device--back">
+                <img src="./assets/projects/shuzhai/home-screen.jpg" alt="手机主屏幕上的书摘图标" />
+              </div>
+              <div class="sz-device sz-device--front">
+                <img src="./assets/projects/shuzhai/record.png" alt="书摘记录页实机截图" />
+              </div>
+            </div>
+          </li>
+          <li>
+            <span class="case-step-number">02</span>
+            <div class="case-step-copy"><span class="case-step-aside">REVIEW / EDIT</span><h3>按时间，或按类型</h3><p>总览页面按时间自动记录，也可以切换类型查看历史记录。顶部为用户统计记录的天数、总条数和不同类型的数量。<br />按时间，回看每天读了什么、想了什么、记录了什么；按类型，回顾原文引用和感想素材，方便后期整理思路和写作。</p></div>
+            <div class="case-step-visual shuzhai-step-visual" role="img" aria-label="总览实机画面：左侧按类型查看感想，右侧按时间查看当天记录">
+              <div class="sz-device sz-device--back">
+                <img src="./assets/projects/shuzhai/type-thought.png" alt="按类型查看感想" />
+              </div>
+              <div class="sz-device sz-device--front">
+                <img src="./assets/projects/shuzhai/overview-time.png" alt="按时间查看总览" />
+              </div>
+            </div>
+          </li>
+          <li>
+            <span class="case-step-number">03</span>
+            <div class="case-step-copy"><span class="case-step-aside">EXPORT / KEEP</span><h3>阶段性清理，打包迁移</h3><p>格式可选CSV和Markdown，方便导入Notion或Obsidian等笔记软件。移动端优先调起系统分享。</p></div>
+            <div class="case-step-visual shuzhai-step-visual" role="img" aria-label="左侧为编辑一条记录，右侧为导出菜单，可选 CSV 或 Markdown">
+              <div class="sz-device sz-device--back">
+                <img src="./assets/projects/shuzhai/edit.png" alt="编辑一条摘抄：可改类型、删除或保存" />
+              </div>
+              <div class="sz-device sz-device--front">
+                <img src="./assets/projects/shuzhai/export.png" alt="总览页打开导出菜单，可选 CSV 或 Markdown" />
+              </div>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section class="case-principle" aria-labelledby="principle-title">
+        <div class="case-principle-inner case-container">
+          <div class="case-section-label"><span>03 / DESIGN DECISIONS</span><span>关键判断</span></div>
+          <h2 id="principle-title">一个功能的使用频率和质量，<br /><em>比功能的复杂与完善更重要。</em></h2>
+          <div class="case-principle-grid">
+            <article><span>01 / SCOPE</span><h3>类型只留两个</h3><p>不建书库，不打标签。需要分开的是「书说的」和「我说的」。</p></article>
+            <article><span>02 / SEQUENCE</span><h3>首页不放管理</h3><p>统计、导出、清空都在总览。打开后的第一眼是日期和输入框。管理是记完以后的事。</p></article>
+            <article><span>03 / EXIT</span><h3>只做记录与导出</h3><p>不设置账号，数据在本地浏览器，后期可主动导出，连接到常用知识库，如Notion和Obsidian。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-system case-container" aria-labelledby="system-title">
+        <div class="case-section-label"><span>04 / IMPLEMENTATION</span><span>如何落地</span></div>
+        <div class="case-system-layout">
+          <div>
+            <h2 id="system-title">从最简单的开始，<br />完成用户体验闭环。</h2>
+            <p>网页负责记录、回看和修改。数据写在浏览器的 localStorage 里，不经过账号，也不上传。Service Worker 只把页面缓存下来，让离线仍能打开，不负责同步。</p>
+          </div>
+          <div class="case-system-diagram" role="img" aria-label="书摘网页可添加到主屏幕，数据留在本地浏览器，再导出为 CSV 或 Markdown，进入 Notion 或 Obsidian">
+            <div class="case-system-row case-system-row--center"><span>书摘网页<br /><small>记录 · 回看 · 修改<br />添加到主屏幕</small></span></div>
+            <div class="case-system-arrow" aria-hidden="true">↓</div>
+            <div class="case-system-row case-system-row--center"><span>浏览器本地存储<br /><small>localStorage · 无账号 · 不上传</small></span></div>
+            <div class="case-system-arrow" aria-hidden="true">↓</div>
+            <div class="case-system-row case-system-row--center"><span>导出文件<br /><small>CSV / Markdown<br />Notion / Obsidian</small></span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-experience-section case-container shuzhai-experience" id="case-experience" aria-labelledby="experience-title">
+        <div class="case-section-label"><span>05 / LIVE DEMO</span><span>在线体验</span></div>
+        <h2 id="experience-title">打开书摘，<br />试一次真实记录。</h2>
+        <p class="shuzhai-experience-note">真实工具体验。内容写在当前浏览器，刷新后仍在。</p>
+        <div class="shuzhai-demo-stage">
+          <iframe class="shuzhai-demo-frame" title="书摘记录管理助手，数据只保存在当前浏览器" src="./projects/shuzhai-app/index.html" loading="lazy"></iframe>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><a class="case-return" href="./index.html#ai-projects">返回 AI 实践 <span aria-hidden="true">↗</span></a><p>© 2026 ZouYe · 建筑设计与 AI 实践</p></footer>
+  </div>
+  <script>
+    const stepVisuals = document.querySelectorAll('.shuzhai-step-visual');
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const stepObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.18 });
+      stepVisuals.forEach((visual) => {
+        visual.classList.add('is-enhanced');
+        stepObserver.observe(visual);
+      });
+    }
+  </script>
+</body>
+</html>
