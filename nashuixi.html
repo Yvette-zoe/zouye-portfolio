@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="邹晔将纳水溪的 SketchUp 规划存档转译为可交互的乡村微缩模型。沿庙前道路看集市、连廊与昼夜灯火。">
+  <title>纳水溪微缩村落｜AI 实践｜ZouYe</title>
+  <link rel="stylesheet" href="./editorial.css">
+  <style>
+    main, header, footer {max-width:1440px;margin:auto;padding-inline:var(--gutter)}
+    header, footer {display:flex;align-items:center;justify-content:space-between;padding-block:22px}
+    header {border-bottom:1px solid var(--line)}
+    header>a:last-child, footer a {text-underline-offset:5px;font-size:.88rem}
+    .intro {display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:end;padding:clamp(32px,6vw,80px) 0 32px}
+    h1,h2 {font-family:"Songti SC","STSong","SimSun",serif;font-weight:500;line-height:1.16}
+    h1 {font-size:clamp(2.6rem,5.3vw,5.1rem);letter-spacing:-.055em;margin:.35em 0 0}
+    h2 {font-size:clamp(1.5rem,2.8vw,2.75rem);margin:0}
+    p {line-height:1.8;margin:.4em 0}
+    .category, figcaption {font-size:.84rem;color:#5c5e56}
+    .preview {margin:0;background:#e6eee7}
+    .preview img,.detail img {display:block;width:100%;height:auto}
+    .actions {display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;margin:18px 0}
+    .launch {display:inline-flex;background:#344939;color:white;padding:11px 17px;text-decoration:none;border-radius:3px}
+    .actions a:not(.launch){font-size:.9rem;text-underline-offset:4px}
+    .hint {font-size:.85rem;color:#545951;margin:0}
+    .method {display:grid;grid-template-columns:1fr 2fr;gap:clamp(20px,4vw,60px);margin:64px 0 34px}
+    .detail {display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:54px}
+    .detail figure {margin:0}figcaption {line-height:1.7;padding-top:8px}
+    footer {border-top:1px solid var(--line)}
+    @media(max-width:720px){.intro,.method,.detail {grid-template-columns:1fr;gap:18px}.method {margin-top:42px}.actions {gap:12px 16px}}
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand-lockup" href="./index.html#home"><span class="brand-mark"><img src="./assets/yvette-portrait.jpg" alt=""></span><span class="brand-name">ZouYe</span></a>
+    <a href="./index.html#ai-projects">返回 AI 实践</a>
+  </header>
+  <main>
+    <section class="intro">
+      <div><span class="category">AI 实践 / 建筑与规划</span><h1>纳水溪微缩村落</h1></div>
+      <div>
+        <p>从文化活动中心的玻璃连廊下到关帝庙，再沿庙前道路走到集市。把这段顺应高差的村落空间做成一座可以拿在手里转动的网页模型。</p>
+        <div class="actions"><a class="launch" href="./projects/nashuixi/">进入互动模型 ↗</a><a href="./projects/nashuixi/?time=night">从夜景进入</a></div>
+        <p class="hint">电脑拖动旋转、滚轮缩放、右键拖动平移。手机单指旋转，双指缩放或平移。</p>
+      </div>
+    </section>
+    <figure class="preview"><a href="./projects/nashuixi/" aria-label="打开可自由旋转的纳水溪模型"><img src="./assets/projects/nashuixi/day.webp" width="1600" height="900" alt="日间鸟瞰，文化活动中心、关帝庙与集市依地势排布在同一底座上"></a></figure>
+    <section class="method">
+      <h2>从规划存档到浏览器</h2>
+      <div><p>以原设计的分层平面、立面和爆炸图确定展示范围，从 SketchUp 存档提取建筑、铺装和地形。各组共用原模型坐标，保留台地高差和连廊的转折。</p>
+      <p>AI 辅助编写模型转换与 Three.js 场景代码，再用固定机位核对建筑落地、人物尺度和灯位。窗灯先亮，屋脊与廊边彩灯随后渐亮。摊位、骑行者和燕群为这次互动展示新增的配景。</p></div>
+    </section>
+    <div class="detail">
+      <figure><img loading="lazy" src="./assets/projects/nashuixi/corridor.webp" width="1600" height="900" alt="玻璃连廊的彩灯沿屋顶两侧随楼梯转折"><figcaption>活动中心｜灯带沿连廊两侧结构边转折，标出院落之间的高差。</figcaption></figure>
+      <figure><img loading="lazy" src="./assets/projects/nashuixi/market.webp" width="1600" height="900" alt="庙前广场有果蔬、陶器、糕点三个摊位，棚下亮起暖灯"><figcaption>庙前广场｜三个摊位集中在同层铺地，旁边留出骑行和步行路线。</figcaption></figure>
+    </div>
+  </main>
+  <footer><span>ZouYe</span><a href="./index.html#ai-projects">返回 AI 实践</a></footer>
+</body>
+</html>
