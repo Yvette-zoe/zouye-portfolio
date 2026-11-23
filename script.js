@@ -23,6 +23,17 @@ const mockData = {
   ],
   aiProjects: [
     {
+      id: "nashuixi",
+      category: "纳水溪微缩村落",
+      title: "纳水溪微缩村落",
+      summary: "沿文化活动中心的连廊走向关帝庙和集市。自由旋转、缩放模型，切换昼夜，或导出不同风格的建筑效果图。",
+      image: "projects/nashuixi/day.webp",
+      imageAlt: "纳水溪文化活动中心、关帝庙与庙前广场的日间鸟瞰",
+      type: "INTERACTIVE MODEL",
+      detailHref: "./nashuixi.html",
+      detailLabel: "进入互动模型",
+    },
+    {
       id: "xiajiben",
       category: "保质期管理",
       title: "匣记本",
@@ -74,17 +85,6 @@ const mockData = {
       input: "一段摘抄或感想",
       process: "本地保存 · 按时间或类型回看",
       output: "CSV 与 Markdown 导出",
-    },
-    {
-      id: "nashuixi",
-      category: "空间建模",
-      title: "纳水溪微缩村落",
-      summary: "从 SketchUp 规划存档出发，用 AI 辅助制作可旋转的乡村微缩模型，沿台地看文化活动中心、关帝庙与庙前集市的昼夜变化。",
-      image: "projects/nashuixi/day.webp",
-      imageAlt: "日间鸟瞰纳水溪的活动中心、关帝庙与庙前广场",
-      type: "INTERACTIVE MODEL",
-      detailHref: "./nashuixi.html",
-      detailLabel: "查看案例与模型",
     },
   ],
   articles: articlePosts,
@@ -338,18 +338,18 @@ function render() {
 
     <dialog class="about-dialog" id="about-dialog" aria-labelledby="about-dialog-title">
       <div class="about-dialog-header">
-        <p class="about-dialog-kicker">ABOUT ZOUYE / Q&A PREVIEW</p>
+        <p class="about-dialog-kicker">ABOUT ZOUYE / Q&A</p>
         <button class="about-dialog-close" type="button" aria-label="关闭对话框">×</button>
       </div>
       <h2 id="about-dialog-title">更多关于我，<br /><em>从一个问题开始。</em></h2>
-      <p class="about-dialog-note">当前为前端模拟问答，尚未连接简历与项目知识库。</p>
+      <p class="about-dialog-note">回答依据本站公开的简历、项目与文章。资料里没有的，我会直接说明。</p>
       <div class="about-dialog-suggestions" aria-label="示例问题">
         <button type="button" data-question="你的学习背景是什么？">学习背景</button>
         <button type="button" data-question="你做过哪些工作？">工作经历</button>
         <button type="button" data-question="你目前在探索什么？">当前探索</button>
       </div>
       <div class="about-chat-log" role="log" aria-label="对话记录" aria-live="polite">
-        <div class="about-chat-message about-chat-message--assistant"><span>模拟回答</span><p>你好，可以问我关于学习、工作和当前实践的问题。</p></div>
+        <div class="about-chat-message about-chat-message--assistant"><span>AI 回答</span><p>你好，可以问我关于学习、工作和当前实践的问题。</p></div>
       </div>
       <form class="about-chat-form">
         <label class="visually-hidden" for="about-question">输入关于 ZouYe 的问题</label>
@@ -633,19 +633,55 @@ function initContactInteractions() {
     if (event.target === dialog) dialog.close();
   });
 
-  function addChatMessage(kind, message) {
+  const chatHistory = [];
+  let answering = false;
+
+  function addChatMessage(kind, message, labelText) {
     const item = document.createElement("div");
     item.className = `about-chat-message about-chat-message--${kind}`;
     const label = document.createElement("span");
-    label.textContent = kind === "assistant" ? "模拟回答" : "访客提问";
+    label.textContent = labelText || (kind === "assistant" ? "AI 回答" : "访客提问");
     const body = document.createElement("p");
     body.textContent = message;
     item.append(label, body);
     chatLog.append(item);
     chatLog.scrollTop = chatLog.scrollHeight;
+    return item;
   }
 
-  // 后续接入 RAG 时，用知识库 API 的答复替换此模拟答案函数。
+  function renderSources(item, sources) {
+    if (!sources?.length) return;
+    const list = document.createElement("ul");
+    list.className = "about-chat-sources";
+    for (const source of sources) {
+      if (!source?.url) continue;
+      const li = document.createElement("li");
+      const link = document.createElement("a");
+      link.href = source.url;
+      link.textContent = source.title || source.url;
+      if (/^https?:/i.test(source.url)) link.target = "_blank";
+      link.rel = "noreferrer";
+      li.append(link);
+      list.append(li);
+    }
+    if (list.childElementCount) item.append(list);
+  }
+
+  function setAnswering(busy) {
+    answering = busy;
+    questionInput.disabled = busy;
+    dialog.querySelector(".about-chat-form button").disabled = busy;
+    dialog.querySelectorAll("[data-question]").forEach(button => {
+      button.disabled = busy;
+    });
+  }
+
+  function rememberTurn(question, answer) {
+    chatHistory.push({ role: "user", content: question }, { role: "assistant", content: answer });
+    if (chatHistory.length > 8) chatHistory.splice(0, chatHistory.length - 8);
+  }
+
+  // 接口不可用时退回原来的规则答案，避免对话框完全不能用。
   function getDemoAnswer(question) {
     if (/学习|教育|学历|大学|硕士|本科/.test(question)) {
       return "我本科就读于华中科技大学建筑学专业，后在重庆大学攻读建筑学硕士，方向为建筑历史与理论。";
@@ -659,16 +695,85 @@ function initContactInteractions() {
     if (/建筑|规划|遗产|作品集/.test(question)) {
       return "建筑与规划是我的专业起点。2015-2025 年的建筑作品已整理在独立作品集站点中；遗产保护也是我的关注方向之一。";
     }
-    return "这个问题暂不在当前演示资料中。后续接入简历与项目知识库后，我会依据资料回答；目前也可以通过邮件联系我。";
+    return "这个问题不在离线资料里。网络恢复后我会按知识库回答，也可以发邮件联系我。";
   }
 
-  function askQuestion(question) {
+  async function readAnswer(response, body) {
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = "";
+    let text = "";
+    const sources = [];
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split("\n");
+      buffer = lines.pop() ?? "";
+      for (const line of lines) {
+        const trimmed = line.trim();
+        if (!trimmed.startsWith("data:")) continue;
+        const payload = trimmed.slice(5).trim();
+        if (!payload || payload === "[DONE]") continue;
+        let event;
+        try {
+          event = JSON.parse(payload);
+        } catch {
+          continue;
+        }
+        if (event.type === "delta" && event.text) {
+          text += event.text;
+          body.textContent = text;
+          chatLog.scrollTop = chatLog.scrollHeight;
+        } else if (event.type === "sources") {
+          sources.push(...(event.sources || []));
+        } else if (event.type === "error" && !text) {
+          throw new Error("offline");
+        }
+      }
+    }
+    return { text, sources };
+  }
+
+  async function askQuestion(question) {
     const value = question.trim();
-    if (!value) return;
+    if (!value || answering) return;
     addChatMessage("visitor", value);
-    addChatMessage("assistant", getDemoAnswer(value));
     questionInput.value = "";
-    questionInput.focus();
+    const pending = addChatMessage("assistant", "思考中", "AI 回答");
+    const body = pending.querySelector("p");
+    pending.classList.add("is-streaming");
+    setAnswering(true);
+    try {
+      if (location.protocol === "file:") throw new Error("offline");
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question: value, history: chatHistory.slice(-8) }),
+      });
+      if (response.status === 429) {
+        body.textContent = "提问有点频繁，请稍后再试。";
+        return;
+      }
+      if (response.status === 400) {
+        const errorBody = await response.json().catch(() => ({}));
+        body.textContent = errorBody.error || "这个问题没有发送成功。";
+        return;
+      }
+      if (!response.ok || !response.body) throw new Error("offline");
+      const result = await readAnswer(response, body);
+      body.textContent = result.text || "这次没有生成回答，请再试一次。";
+      renderSources(pending, result.sources);
+      rememberTurn(value, body.textContent);
+    } catch {
+      pending.querySelector("span").textContent = "离线回答";
+      body.textContent = getDemoAnswer(value);
+      rememberTurn(value, body.textContent);
+    } finally {
+      pending.classList.remove("is-streaming");
+      setAnswering(false);
+      questionInput.focus();
+    }
   }
 
   dialog.querySelector(".about-chat-form").addEventListener("submit", event => {

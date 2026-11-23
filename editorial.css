@@ -239,6 +239,17 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .about-chat-form input::placeholder { color: var(--muted); }
 .about-chat-form button { border: 0; background: transparent; color: var(--ink); font-size: 12px; cursor: pointer; }
 .about-chat-form button:hover { color: #a46f5e; }
+.about-chat-form button:disabled,
+.about-chat-form input:disabled,
+.about-dialog-suggestions button:disabled { opacity: .45; cursor: default; }
+.about-chat-message.is-streaming p::after { content: ""; display: inline-block; width: 7px; height: 1em; margin-left: 3px; vertical-align: text-bottom; background: #a46f5e; animation: about-caret 1s steps(1) infinite; }
+.about-chat-sources { display: flex; flex-wrap: wrap; gap: 6px 12px; margin: 8px 0 0; padding: 0; list-style: none; }
+.about-chat-sources a { color: #9c6a5a; font-size: 10px; letter-spacing: .04em; text-decoration: none; }
+.about-chat-sources a:hover { color: var(--ink); }
+@keyframes about-caret { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .about-chat-message.is-streaming p::after { animation: none; }
+}
 .site-footer { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 40px var(--gutter); font-size: 11px; color: var(--muted); }
 .site-footer a { text-decoration: none; }
 
