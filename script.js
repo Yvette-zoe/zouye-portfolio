@@ -77,8 +77,8 @@ const mockData = {
     },
     {
       id: "nashuixi",
-      category: "纳水溪微缩村落",
-      title: "纳水溪微缩村落",
+      category: "空间模型",
+      title: "微缩场景",
       summary: "沿文化活动中心的连廊走向关帝庙和集市。自由旋转、缩放模型，查看庙前广场的昼夜变化。",
       image: "projects/nashuixi/day.webp",
       imageAlt: "纳水溪文化活动中心、关帝庙与庙前广场的日间鸟瞰",

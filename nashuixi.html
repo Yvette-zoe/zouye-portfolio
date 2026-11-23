@@ -23,7 +23,7 @@
     .side-rail > * { pointer-events: auto; }
     .side-rail .time-dock { position: static; }
     .render-preview { position: relative; }
-    .render-preview button { min-height: 44px; padding: 0 16px; border: 1px solid var(--line); border-radius: 6px; background: rgb(247 244 237 / 94%); color: var(--ink); font: inherit; font-size: 13px; cursor: help; }
+    .render-preview button { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 16px; border: 1px solid var(--line); border-radius: 6px; background: rgb(247 244 237 / 94%); color: var(--ink); font: inherit; font-size: 13px; cursor: help; }
     .render-hint { position: absolute; top: 50%; right: calc(100% + 8px); transform: translateY(-50%); white-space: nowrap; padding: 6px 10px; border-radius: 4px; background: #344939; color: white; font-size: 12px; visibility: hidden; pointer-events: none; }
     .render-preview button:focus + .render-hint { visibility: visible; }
     @media (hover: hover) { .render-preview button:hover + .render-hint { visibility: visible; } }
@@ -74,7 +74,7 @@
     </details>
     <div class="side-rail">
       <div class="render-preview">
-        <button type="button" aria-describedby="render-hint">效果图</button>
+        <button type="button" aria-describedby="render-hint"><img src="./assets/icons/render-image.svg" width="22" height="22" alt="">效果图</button>
         <span id="render-hint" class="render-hint" role="tooltip">建设中</span>
       </div>
       <div class="time-dock" role="group" aria-label="切换白天或夜晚">
